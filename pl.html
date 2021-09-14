@@ -5,13 +5,13 @@
     <script type="text/javascript">
         var _iub = _iub || [];
         _iub.csConfiguration = {
-            lang: "pl", 
-            siteId: 2291888, 
-            cookiePolicyId: 62936887, 
-            //cookiePolicyUrl: "https://www.thebroy.com/pl/strona-glowna", 
-            consentOnScroll: false, 
-            enableCMP: true, 
-            perPurposeConsent: true,
+            lang: "pl", //lang: "pl" se vuoi mostrare il banner in una lingua non supportata (ad esempio il polacco)
+            siteId: 2291888, //usa il tuo siteId
+            cookiePolicyId: 62936887, //usa il tuo cookiePolicyId
+            //cookiePolicyUrl: "https://www.thebroy.com/pl/strona-glowna", //link a una pagina che non fa uso di cookie e che contiene la cookie policy in una lingua non supportata (ad esempio il polacco), vedi "Tradurre i testi in una lingua non supportata"
+            consentOnScroll: false, //evita che il consenso venga prestato tramite lo scroll di pagina
+            enableCMP: true, //abilita la compatibilità allo IAB Transparency and Consent Framework
+            perPurposeConsent: true, //abilita il consenso per categoria
             banner: {
                 position: "float-top-center",
                 acceptButtonDisplay: true,
@@ -19,7 +19,8 @@
             },
 
             i18n: {
-                
+
+                //elenco di tutte le stringhe di testo modificabili
                 it: {
                     banner: {
                         title: 'Uwaga',
@@ -36,6 +37,7 @@
                         cookie_policy_caption: 'polityka plików cookies',
                         vendor_list_caption: 'osoby trzecie',
                         advertising_preferences_caption: 'ustawienia preferencji reklam',
+                    //    do_not_sell_caption: "Non vendere le mie informazioni personali",
                         privacy_policy_caption: "polityka prywatności",
                         accept_button_caption: 'Zaakceptuj',
                         customize_button_caption: 'Dostosuj'
@@ -153,6 +155,74 @@
                     },
                 },
 
-               
- </head>
+                //alcune stringhe di esempio tradotte in una lingua non supportata (polacco)
+                pl: {
+                    banner: {
+                        title: 'Uwaga',
+                        paragraph_1: 'Niniejsza witryna lub stosowane na niej narzędzia osób trzecich wykorzystują pliki cookie, które są niezbędne do jej działania i konieczne do osiągnięcia celów przedstawionych w polityce plików cookies. Jeśli Użytkownik chce dowiedzieć się więcej lub wycofać swoją zgodę na stosowanie wszystkich lub niektórych plików cookies, prosimy o zapoznanie się z %{cookie_policy_link}.',
+                        paragraph_2: 'Zamykając ten baner, klikając link lub kontynuując przeglądanie strony, Użytkownik wyraża zgodę na stosowanie plików cookies.',
+                        cookie_policy_caption: 'polityką plików cookies',
+                        accept_button_caption: 'Zaakceptuj',
+                        customize_button_caption: 'Dostosuj',
+                    },
+                    footer: {
+                        message: 'Kontynuacja przeglądania strony lub zamknięcie tego okna oznacza akceptację stosowania plików cookies.',
+                        btnCaption: 'Kontynuuj przeglądanie'
+                    },
+                    //... dovrai tradurre TUTTE le stringhe, vedi sopra per l'elenco completo
+                },
+
+            }
+        };
+    </script>
+    <script type="text/javascript" src="//cdn.iubenda.com/cs/tcf/stub.js"></script> <!-- IAB Transparency and Consent Framework -->
+    <script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
+</head>
+
+<body>
+    <header>
+        <div class="wrapper">
+            <h1>iubenda Cookie Solution</h1>
+            <p>Utilizzo della libreria i18n</p>
+        </div>
+    </header>
+
+    <section class="wrapper">
+        <p>In questa demo ti mostriamo come sfruttare la libreria JavaScript i18n per modificare/tradurre il testo di qualunque elemento della Cookie Solution.</p>
+
+        <h4>Modificare i testi</h4>
+        <p>Nel codice incluso nella sezione <code>i18n</code>, troverai un elenco di tutti gli elementi testuali che puoi modificare. Oltre che per le traduzioni in lingue non supportate infatti, puoi utilizzare <code>i18n</code> anche per personalizzare i testi nelle lingue supportate (come l'italiano).</p>
+
+        <h4>Tradurre i testi in una lingua non supportata</h4>
+        <p>Se invece vuoi tradurre il cookie banner in una lingua non supportata (ad esempio il polacco) dovrai definire:</p>
+
+        <ul>
+            <li>l'oggetto <code>i18n</code> con <strong>tutte</strong> le stringhe – vedi il codice sotto il commento <em>"<strong>alcune</strong> stringhe di esempio tradotte in una lingua non supportata (polacco)"</em>;</li>
+        </ul>
+
+        <p>e un paio di altri parametri:</p>
+
+        <ul>
+            <li><code>lang: "pl"</code>, la lingua in cui vuoi mostrare il cookie banner;</li>
+            <li><code>cookiePolicyUrl: "..."</code>, il link alla cookie policy previsto all'interno del cookie banner. In questo caso dovrai fornire una pagina che non fa uso di cookie e che contenga la cookie policy in polacco.</li>
+        </ul>
+
+        <div class="note">
+            <ul>
+                <li>Ricordati di usare i dati che trovi nella <a href="https://www.iubenda.com/it/dashboard" target="_blank">tua dashboard</a></li>
+                <li>Si tratta di un esempio a puro scopo illustrativo, <strong>nessun consenso viene salvato</strong> (risultato di <code>_iub.csConfiguration.skipSaveConsent = true</code>). Ricarica la pagina per far riapparire il cookie banner.</li>
+            </ul>
+        </div>
+
+        <h4>Guide utili</h4>
+        <ul class="guides">
+            <li><a href="https://www.iubenda.com/it/help/680" target="_blank">Introduzione alla iubenda Cookie Solution</a></li>
+            <li><a href="https://www.iubenda.com/it/help/1696" target="_blank">Come personalizzare il cookie banner (guida di base)</a></li>
+            <li><a href="https://www.iubenda.com/it/help/623" target="_blank">Come configurare la Cookie Solution (guida avanzata)</a></li>
+            <li><a href="https://www.iubenda.com/it/help/1627" target="_blank">Introduzione al blocco preventivo dei cookie</a></li>
+        </ul>
+
+    </section>
+</body>
+
 </html>
